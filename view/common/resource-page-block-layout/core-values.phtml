@@ -49,19 +49,17 @@ $fields = [
 <div class="block block-resource block-core-values">
 
     <?php if (!empty($heading)): ?>
-        <div class="cell">
-            <h3 class="margin-bottom-1"><?php echo $heading; ?></h3>
-        </div>
+        <h3><?php echo $heading; ?></h3>
     <?php endif; ?>
 
-    <div class="cell medium-12 callout">
+    <div class="block-content">
 
         <?php foreach ($fields as $term => $label): ?>
-            <?php if ($values = $resource->value($term, ['all' => true])): ?>
+            <?php if ($values = $resource->value($term, ['all' => true, 'lang' => $langValue])): ?>
                 <?php foreach ($values as $value): ?>
-                    <p class="margin-bottom-1">
-                        <span class="text-bold"><?php echo $label; ?>:</span>
-                        <?php echo $value; ?>
+                    <p>
+                        <strong><?php echo $label; ?>:</strong>
+                        <?php echo $isHtml($value) ? $value : $escape($value); ?>
                     </p>
                 <?php endforeach; ?>
             <?php endif; ?>
