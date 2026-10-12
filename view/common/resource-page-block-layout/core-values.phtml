@@ -1,0 +1,64 @@
+<?php
+/**
+ * Resource Page Block: Extended Metadata
+ *
+ * Fields included:
+ * dcterms:creator
+ * dcterms:audience
+ * dcterms:date
+ * dcterms:coverage
+ * foaf:based_near
+ * dcterms:description
+ * dcterms:type
+ * dcterms:format
+ * dcterms:language
+ * dcterms:source
+ * dcterms:publisher
+ * dcterms:isPartOf
+ *
+ * Variables available:
+ *   $resource : the Omeka S resource
+ *   $block    : the block object
+ *   $heading  : optional heading text
+ */
+
+$fields = [
+    'dcterms:creator'     => $this->translate('Creator'),
+    'dcterms:audience'    => $this->translate('Audience'),
+    'dcterms:date'        => $this->translate('Date'),
+    'dcterms:coverage'    => $this->translate('Coverage'),
+    'foaf:based_near'     => $this->translate('Based Near'),
+    'dcterms:description' => $this->translate('Description'),
+    'dcterms:type'        => $this->translate('Type'),
+    'dcterms:format'      => $this->translate('Format'),
+    'dcterms:language'    => $this->translate('Language'),
+    'dcterms:source'      => $this->translate('Source'),
+    'dcterms:publisher'   => $this->translate('Publisher'),
+    'dcterms:isPartOf'    => $this->translate('Is Part Of'),
+];
+?>
+
+<div class="block block-resource block-created-publisher-extended grid-x grid-margin-x">
+
+    <?php if (!empty($heading)): ?>
+        <div class="cell">
+            <h3 class="margin-bottom-1"><?php echo $heading; ?></h3>
+        </div>
+    <?php endif; ?>
+
+    <div class="cell medium-12 callout">
+
+        <?php foreach ($fields as $term => $label): ?>
+            <?php if ($values = $resource->value($term, ['all' => true])): ?>
+                <?php foreach ($values as $value): ?>
+                    <p class="margin-bottom-1">
+                        <span class="text-bold"><?php echo $label; ?>:</span>
+                        <?php echo $value; ?>
+                    </p>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+    </div>
+
+</div>
