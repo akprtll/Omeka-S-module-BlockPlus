@@ -73,6 +73,7 @@ return [
             'block' => Site\ResourcePageBlockLayout\Block::class,
             'buttons' => Site\ResourcePageBlockLayout\Buttons::class,
             'citationResource' => Site\ResourcePageBlockLayout\CitationResource::class,
+            'coreValues' => Site\ResourcePageBlockLayout\CoreValues::class,
             'description' => Site\ResourcePageBlockLayout\Description::class,
             // Keep logical order.
             'htmlArticleStart' => Site\ResourcePageBlockLayout\HtmlArticleStart::class,
